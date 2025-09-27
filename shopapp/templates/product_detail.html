@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="card">
+  <img src="{% static 'images/' %}{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
+  <div class="card-body">
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.description }}</p>
+    <p><b>Price:</b> ₹ {{ product.price }}</p>
+    {% if role == "admin" %}
+      <a href="/products/edit/{{ product.id }}/" class="btn btn-warning">Edit</a>
+      <a href="/products/delete/{{ product.id }}/" class="btn btn-danger">Delete</a>
+    {% endif %}
+    <a href="/products/" class="btn btn-secondary">Back</a>
+  </div>
+</div>
+{% endblock %}
